@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>SurveyEarn — Turn opinions into income</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #1e293b;
+    line-height: 1.5;
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* section spacing */
+.section {
+    padding: 5rem 0;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    letter-spacing: -0.01em;
+    color: #0f172a;
+}
+
+/* buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.6rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background-color: #1e3a5f;
+    color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.btn-primary:hover {
+    background-color: #0f2c48;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #cbd5e1;
+    color: #1e293b;
+}
+
+.btn-outline:hover {
+    border-color: #1e3a5f;
+    background-color: #f8fafc;
+}
+
+.btn-secondary {
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    color: #1e3a5f;
+}
+
+.btn-secondary:hover {
+    background-color: #f1f5f9;
+}
+
+/* navigation */
+nav {
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #eef2f6;
+    backdrop-filter: none;
+    padding: 0.75rem 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1e3a5f;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: -0.3px;
+}
+
+.logo i {
+    font-size: 1.5rem;
+    color: #e67e22;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #334155;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: #e67e22;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #1e3a5f;
+    cursor: pointer;
+}
+
+.mobile-nav {
+    display: none;
+    background: white;
+    border-top: 1px solid #eef2f6;
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.mobile-nav a {
+    text-decoration: none;
+    color: #1e293b;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.mobile-nav a:last-child {
+    border-bottom: none;
+}
+
+/* hero */
+.hero {
+    background: #fefcf7;
+    padding: 5rem 0 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero .container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.hero-content {
+    flex: 1.2;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #eef2ff;
+    padding: 0.3rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #1e3a5f;
+    margin-bottom: 1.5rem;
+}
+
+.hero-badge i {
+    color: #e67e22;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    color: #0c2c44;
+}
+
+.hero h1 span {
+    color: #e67e22;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #475569;
+    margin-bottom: 1.5rem;
+}
+
+.hero-list {
+    list-style: none;
+    margin: 1.5rem 0;
+}
+
+.hero-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 0.7rem;
+    color: #2d3a4b;
+}
+
+.hero-list li i {
+    color: #e67e22;
+    font-size: 1rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 1.8rem 0 1.5rem;
+    flex-wrap: wrap;
+}
+
+.stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.stat-item h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #1e3a5f;
+}
+
+.stat-item p {
+    font-size: 0.8rem;
+    color: #5b6e8c;
+}
+
+.hero-image {
+    flex: 1;
+    background: #f1f5f9;
+    border-radius: 2rem;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05);
+    border: 1px solid #e9edf2;
+}
+
+.hero-image i {
+    font-size: 6rem;
+    color: #e67e22;
+    opacity: 0.9;
+}
+
+.hero-image p {
+    margin-top: 1rem;
+    font-weight: 500;
+    color: #2c3e66;
+}
+
+.mobile-auth-buttons {
+    display: none;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+/* how it works cards */
+.how-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.how-card {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 2rem 1.8rem;
+    text-align: center;
+    transition: all 0.25s ease;
+    border: 1px solid #eef2f8;
+    box-shadow: 0 8px 20px -8px rgba(0,0,0,0.04);
+}
+
+.how-card:hover {
+    transform: translateY(-5px);
+    border-color: #e2e8f0;
+    box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
+}
+
+.how-card .number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #e67e22;
+    opacity: 0.4;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.how-card i {
+    font-size: 2.5rem;
+    color: #1e3a5f;
+    margin: 1rem 0;
+}
+
+.how-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.how-card p {
+    color: #5b6e8c;
+}
+
+/* features grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 1.25rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border: 1px solid #edf2f7;
+    transition: all 0.2s;
+}
+
+.feature-card:hover {
+    border-color: #e2e8f0;
+    box-shadow: 0 10px 25px -12px rgba(0,0,0,0.1);
+}
+
+.feature-icon {
+    width: 4rem;
+    height: 4rem;
+    background: #eef2ff;
+    border-radius: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: #1e3a5f;
+    font-size: 1.8rem;
+}
+
+.feature-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+    color: #5b6e8c;
+    font-size: 0.9rem;
+}
+
+/* testimonials */
+.testimonials {
+    background-color: #fafcff;
+}
+
+.testimonial-container {
+    max-width: 780px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.testimonial-card {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 12px 30px -12px rgba(0,0,0,0.05);
+    border: 1px solid #eef2f8;
+    display: none;
+}
+
+.testimonial-card.active {
+    display: block;
+    animation: fadeSlide 0.35s ease;
+}
+
+@keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(8px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+.testimonial-stars {
+    color: #f59e0b;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.testimonial-text {
+    font-size: 1rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    font-style: normal;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.author-avatar {
+    width: 48px;
+    height: 48px;
+    background: #eef2ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1e3a5f;
+    font-size: 1.2rem;
+}
+
+.testimonial-author h4 {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.testimonial-author p {
+    font-size: 0.8rem;
+    color: #7c8ba0;
+}
+
+.testimonial-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.testimonial-controls button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #e2e8f0;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.testimonial-controls button:hover {
+    background: #1e3a5f;
+    color: white;
+    border-color: #1e3a5f;
+}
+
+.testimonial-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #cbd5e1;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.dot.active {
+    width: 24px;
+    background: #e67e22;
+    border-radius: 12px;
+}
+
+/* faq */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: white;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #eef2f8;
+    overflow: hidden;
+    transition: 0.1s;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #1e293b;
+}
+
+.faq-question i {
+    transition: transform 0.2s;
+    color: #e67e22;
+}
+
+.faq-answer {
+    max-height: 0;
+    padding: 0 1.5rem;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    color: #5b6e8c;
+    line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 260px;
+    padding: 0 1.5rem 1.2rem 1.5rem;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+/* contact */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.contact-info {
+    background: #fefcf7;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    border: 1px solid #edf2f7;
+}
+
+.contact-info h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1e3a5f;
+}
+
+.contact-info p {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #2c3e50;
+}
+
+.contact-info i {
+    width: 2rem;
+    color: #e67e22;
+}
+
+.contact-form {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    border: 1px solid #edf2f7;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    font-family: 'Inter', sans-serif;
+    background: #fefefe;
+    transition: 0.2s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #e67e22;
+    box-shadow: 0 0 0 3px rgba(230,126,34,0.1);
+}
+
+.contact-form button {
+    width: 100%;
+    background: #1e3a5f;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.contact-form button:hover {
+    background: #0f2c48;
+}
+
+/* footer */
+footer {
+    background: #0f172a;
+    color: #94a3b8;
+    padding: 3rem 0 2rem;
+    margin-top: 1rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-col h3, .footer-col h4 {
+    color: white;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.footer-col p {
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.newsletter-group {
+    display: flex;
+    margin-top: 0.8rem;
+}
+
+.newsletter-group input {
+    flex: 1;
+    padding: 0.6rem;
+    border-radius: 2rem 0 0 2rem;
+    border: none;
+    background: #1e293b;
+    color: white;
+    padding-left: 1rem;
+}
+
+.newsletter-group button {
+    background: #e67e22;
+    border: none;
+    padding: 0 1rem;
+    border-radius: 0 2rem 2rem 0;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.newsletter-group button:hover {
+    background: #d97319;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #1e293b;
+    font-size: 0.75rem;
+}
+
+/* responsiveness */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    .mobile-menu-btn {
+        display: block;
+    }
+    .hero .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .hero-list li {
+        justify-content: center;
+    }
+    .hero-buttons {
+        justify-content: center;
+    }
+    .stats {
+        justify-content: center;
+    }
+    .section {
+        padding: 3rem 0;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .how-cards, .features-grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    .mobile-auth-buttons {
+        display: flex;
+    }
+    .hero-buttons .btn:first-child {
+        width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1.2rem;
+    }
+    .btn {
+        width: 100%;
+    }
+    .hero-buttons {
+        width: 100%;
+    }
+    .hero-buttons .btn {
+        width: 100%;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation - minimal solid -->
+<nav>
+    <div class="nav-container">
+        <div class="logo">
+            <i class="fas fa-poll"></i> SurveyEarn
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How it works</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+            <a href="login.html" class="btn-outline" style="padding: 0.4rem 1.2rem;">Login</a>
+            <a href="signup.html" class="btn-primary" style="padding: 0.4rem 1.2rem;">Sign Up</a>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+    </div>
+</nav>
+
+<!-- Hero section -->
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-chart-line"></i> Earn up to Ksh 10,000/day
+            </div>
+            <h1>Turn your <span>opinions</span> into real earnings</h1>
+            <p>Get paid for sharing your thoughts. Simple surveys, instant payouts via M-Pesa & PayPal.</p>
+            <ul class="hero-list">
+                <li><i class="fas fa-circle-check"></i> 100% free to join</li>
+                <li><i class="fas fa-circle-check"></i> Flexible – answer anytime</li>
+                <li><i class="fas fa-circle-check"></i> Fast withdrawals, no delays</li>
+            </ul>
+            <div class="hero-buttons">
+                <a href="signup.html" class="btn btn-primary" id="heroCta">Start earning now <i class="fas fa-arrow-right"></i></a>
+                <button class="btn btn-secondary" id="learnMoreBtn">Learn more</button>
+            </div>
+            <div class="mobile-auth-buttons">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="stats">
+                <div class="stat-item"><h3>12K+</h3><p>Active members</p></div>
+                <div class="stat-item"><h3>58K</h3><p>Surveys completed</p></div>
+                <div class="stat-item"><h3>Ksh 2.8M</h3><p>Total paid out</p></div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <i class="fas fa-wallet"></i>
+            <p><strong>💰 Instant cashouts</strong> — M-Pesa ready</p>
+            <i class="fas fa-mobile-alt" style="font-size: 2rem; margin-top: 0.5rem; opacity: 0.7;"></i>
+        </div>
+    </div>
+</section>
+
+<!-- How it works -->
+<section class="section" id="how-it-works">
+    <div class="container">
+        <h2 class="section-title">Earn in three simple steps</h2>
+        <div class="how-cards">
+            <div class="how-card"><div class="number">1</div><i class="fas fa-user-plus"></i><h3>Create free account</h3><p>Sign up in 60 seconds. No credit card required.</p></div>
+            <div class="how-card"><div class="number">2</div><i class="fas fa-clipboard-list"></i><h3>Take surveys</h3><p>Answer questions that match your profile and interests.</p></div>
+            <div class="how-card"><div class="number">3</div><i class="fas fa-money-bill-wave"></i><h3>Withdraw earnings</h3><p>Cash out from Ksh 500 via M-Pesa, bank or PayPal.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="section" id="features">
+    <div class="container">
+        <h2 class="section-title">Why members love SurveyEarn</h2>
+        <div class="features-grid">
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-bolt"></i></div><h3>Lightning payouts</h3><p>Withdrawals processed within 24-48 hours.</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-bell"></i></div><h3>Smart alerts</h3><p>Get notified when high-paying surveys arrive.</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-chart-simple"></i></div><h3>Transparent stats</h3><p>Track earnings & history in your dashboard.</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-user-group"></i></div><h3>Referral bonus</h3><p>Earn 10% of what your friends make — forever.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials (carousel) -->
+<section class="section testimonials" id="testimonials">
+    <div class="container">
+        <h2 class="section-title">Real stories, real rewards</h2>
+        <div class="testimonial-container">
+            <div class="testimonial-card active">
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="testimonial-text">“SurveyEarn changed my spare time into cash! I’ve earned over Ksh 7,500 in two months. M-Pesa withdrawals are super smooth.”</p>
+                <div class="testimonial-author"><div class="author-avatar"><i class="fas fa-user"></i></div><div><h4>Mercy Wanjiku</h4><p>Nairobi, KE</p></div></div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="testimonial-text">“Super intuitive platform. I love how I get surveys that actually match my lifestyle. Customer support is also very responsive.”</p>
+                <div class="testimonial-author"><div class="author-avatar"><i class="fas fa-user"></i></div><div><h4>James Mwangi</h4><p>Freelancer</p></div></div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="testimonial-text">“I was skeptical at first, but the payouts are real. Already referred 3 friends and got my referral bonus. Best side hustle!”</p>
+                <div class="testimonial-author"><div class="author-avatar"><i class="fas fa-user"></i></div><div><h4>Linda Otieno</h4><p>University student</p></div></div>
+            </div>
+        </div>
+        <div class="testimonial-controls">
+            <button id="prevTestimonial"><i class="fas fa-chevron-left"></i></button>
+            <button id="nextTestimonial"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="testimonial-dots" id="testimonialDots"></div>
+    </div>
+</section>
+
+<!-- FAQ Accordion -->
+<section class="section" id="faq">
+    <div class="container">
+        <h2 class="section-title">Got questions? We’ve got answers.</h2>
+        <div class="faq-container">
+            <div class="faq-item"><div class="faq-question">How do I start earning? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Simply sign up for free, complete your profile, and you'll start receiving surveys tailored to you. Each completed survey adds money to your account.</div></div>
+            <div class="faq-item"><div class="faq-question">What payment methods do you support? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">We offer M-Pesa, PayPal, and direct bank transfers in Kenya. Minimum withdrawal is Ksh 500, and funds reach you within 48 hours.</div></div>
+            <div class="faq-item"><div class="faq-question">Why don't I qualify for some surveys? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Surveys target specific demographics. If you're disqualified, don’t worry — new opportunities appear daily. Keep your profile updated to match more surveys.</div></div>
+            <div class="faq-item"><div class="faq-question">Is SurveyEarn really free? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Yes, registration is 100% free. We never ask for payment. You only earn money by sharing your opinions.</div></div>
+            <div class="faq-item"><div class="faq-question">How can I increase my earnings? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Complete your profile, respond quickly to invites, and use the referral program to earn a percentage from friends’ activities.</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col"><h3><i class="fas fa-poll"></i> SurveyEarn</h3><p>Turn your spare minutes into real money. Trusted by thousands of opinion shapers.</p></div>
+            <div class="footer-col"><h4>Newsletter</h4><p>Get early access to premium surveys & tips.</p><div class="newsletter-group"><input type="email" placeholder="Your email" id="newsletterEmail"><button id="newsletterBtn"><i class="fas fa-arrow-right"></i></button></div></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2025 SurveyEarn — All rights reserved.</p></div>
+    </div>
+</footer>
+
+<script>
+    // mobile menu toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    mobileBtn.addEventListener('click', () => {
+        mobileNav.style.display = mobileNav.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // testimonial carousel
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    const prevBtn = document.getElementById('prevTestimonial');
+    const nextBtn = document.getElementById('nextTestimonial');
+    const dotsContainer = document.getElementById('testimonialDots');
+    let currentIdx = 0;
+    function showTestimonial(index) {
+        testimonialCards.forEach((card, i) => {
+            card.classList.toggle('active', i === index);
+        });
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+    }
+    function buildDots() {
+        dotsContainer.innerHTML = '';
+        testimonialCards.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === currentIdx) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                currentIdx = i;
+                showTestimonial(currentIdx);
+            });
+            dotsContainer.appendChild(dot);
+        });
+    }
+    prevBtn.addEventListener('click', () => {
+        currentIdx = (currentIdx - 1 + testimonialCards.length) % testimonialCards.length;
+        showTestimonial(currentIdx);
+    });
+    nextBtn.addEventListener('click', () => {
+        currentIdx = (currentIdx + 1) % testimonialCards.length;
+        showTestimonial(currentIdx);
+    });
+    buildDots();
+
+    // FAQ accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const questionDiv = item.querySelector('.faq-question');
+        questionDiv.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            faqItems.forEach(i => i.classList.remove('active'));
+            if (!isActive) item.classList.add('active');
+        });
+    });
+
+    // contact form
+    const sendBtn = document.getElementById('sendMessageBtn');
+    if (sendBtn) {
+        sendBtn.addEventListener('click', () => {
+            const name = document.getElementById('contactName')?.value.trim();
+            const email = document.getElementById('contactEmail')?.value.trim();
+            const msg = document.getElementById('contactMessage')?.value.trim();
+            if (name && email && msg) {
+                alert(`Thanks ${name}! We'll get back to you within 24h.`);
+                document.getElementById('contactName').value = '';
+                document.getElementById('contactEmail').value = '';
+                document.getElementById('contactMessage').value = '';
+            } else {
+                alert('Please fill in all fields before sending.');
+            }
+        });
+    }
+
+    // hero CTA demo alert
+    const heroCta = document.getElementById('heroCta');
+    if (heroCta) {
+        heroCta.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            window.location.href = "signup.html";
+        });
+    }
+    // learn more alert
+    const learnBtn = document.getElementById('learnMoreBtn');
+    if (learnBtn) {
+        learnBtn.addEventListener('click', () => {
+            alert('Join 12,000+ members already earning with paid surveys. Sign up and start within minutes.');
+        });
+    }
+    // newsletter
+    const newsletterBtn = document.getElementById('newsletterBtn');
+    if (newsletterBtn) {
+        newsletterBtn.addEventListener('click', () => {
+            const emailField = document.getElementById('newsletterEmail');
+            if (emailField && emailField.value.trim()) {
+                alert(`Subscribed! ${emailField.value} will receive updates.`);
+                emailField.value = '';
+            } else {
+                alert('Enter a valid email to subscribe.');
+            }
+        });
+    }
+</script>
+</body>
+</html>
